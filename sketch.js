@@ -9,8 +9,7 @@ function setup() {
   
   function draw() {
     background(244, 248, 252);
-    game.move();
-    game.draw();
+    game.logic();
   }
 
   function keyPressed(){

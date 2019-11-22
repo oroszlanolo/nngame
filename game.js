@@ -1,7 +1,13 @@
 class Game {
     constructor() {
         this.player = new Player(100, 200, windowWidth / 2, windowHeight - 100);
+        this.spawnQueue = [];
         this.tickets = [];
+        this.failed = [];
+    }
+    logic(){
+        this.move();
+        this.draw();
     }
     move() {
         this.player.move();

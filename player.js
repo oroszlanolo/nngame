@@ -21,12 +21,13 @@ class Player {
         this.dir = clamp(this.dir + val, -1, 1);
     }
     accelerate() {
-        this.v += this.acc * this.dir;
+        this.v += this.acc * this.dir * deltaTime / 15;
+        var friction = this.friction  * deltaTime / 15;
         if (this.dir == 0) {
-            if (this.v > this.friction) {
-                this.v -= this.friction;
-            } else if (this.v < - this.friction) {
-                this.v += this.friction;
+            if (this.v > friction) {
+                this.v -= friction;
+            } else if (this.v < - friction) {
+                this.v += friction;
             } else {
                 this.v = 0;
             }
@@ -35,7 +36,7 @@ class Player {
     }
     move() {
         this.accelerate();
-        this.x += this.v;
+        this.x += this.v * deltaTime / 15;
         this.x = clamp(this.x, 0 + this.w / 2, windowWidth - this.w / 2);
     }
     hit(ticket){
