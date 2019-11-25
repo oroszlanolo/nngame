@@ -18,7 +18,6 @@ class Player {
     }
     setYPos() {
         this.y = windowHeight - PLAYER_H / 2;
-        print(windowHeight);
     }
     draw() {
         stroke(0);

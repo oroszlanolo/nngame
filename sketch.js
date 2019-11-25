@@ -23,7 +23,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   setSizes();
   game = new Game();
-  game.newGame();
+  //game.newGame();
 }
 
 function draw() {

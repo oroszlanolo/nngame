@@ -27,3 +27,8 @@ function setSizes() {
 let TICKET_W = 100;
 let TICKET_H = 100;
 let TICKET_V = 5;
+
+//game
+const BASE_DIFFICULTY = 1;
+const BASE_SPAWNTIME = 3000;
+const RUMP_UP = 1.2;
