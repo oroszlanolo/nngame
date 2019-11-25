@@ -21,7 +21,7 @@ class GUI {
         text("NEW GAME", windowWidth / 2, 0, windowWidth / 2, windowHeight);
         this.drawArrow(windowWidth / 4 * 3, windowHeight / 4 * 3, windowHeight / 12, PI, true);
     }
-    drawArrow(x, y, size, angle, clickable){
+    drawArrow(x, y, size, angle, clickable) {
         push();
         stroke(0, 0, 0, clickable ? 255 : 50);
         fill(0, 0, 0, clickable ? 100 : 50);
@@ -29,15 +29,19 @@ class GUI {
         rotate(angle);
         beginShape();
         vertex(0 - 0.75 * size, 0 - size / 2);
-        vertex(0 + 1.75 * size, 0  - size / 2);
+        vertex(0 + 1.75 * size, 0 - size / 2);
         vertex(0 + 1.75 * size, 0 + size / 2);
         vertex(0 - 0.75 * size, 0 + size / 2);
         vertex(0 - 0.75 * size, 0 + 1 * size);
-        vertex(0 - 1.75 * size, 0 );
+        vertex(0 - 1.75 * size, 0);
         vertex(0 - 0.75 * size, 0 - size);
         vertex(0 - 0.75 * size, 0 - size / 2);
         endShape();
         pop();
+    }
+    drawInGame(points, fails) {
+        this.drawPoints(points);
+        this.drawFails(fails);
     }
     drawPoints(points) {
         push();
@@ -59,7 +63,7 @@ class GUI {
         text("ERRORS: " + fails, 10, 30 + this.pointsSizeRatio * windowHeight + 10);
         pop();
     }
-    drawPostScreen(succ, tickets){
+    drawPostScreen(succ, tickets) {
         background(255);
         fill(146, 204, 227, 100);
         stroke(100);
@@ -74,9 +78,10 @@ class GUI {
         text(succ ? "Congratulation, the release was successful!" : "I'm sorry, the release was a failure!", 0, 0, windowWidth, windowHeight / 4);
         textSize(windowHeight / 30);
         text(succ ? "" : "Try to convince Pana, these tickets are WBD", 0, windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
-        this.drawArrow(windowWidth / 4, windowHeight / 12 * 11, windowHeight / 18, 0, false);
-        text(succ ? "Next Release" : "Main Menu", windowWidth / 2,  windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
+        this.drawArrow(windowWidth / 4, windowHeight / 12 * 11, windowHeight / 18, 0, !succ);
+        text(succ ? "Next Release" : "Main Menu", windowWidth / 2, windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
         this.drawArrow(windowWidth / 4 * 3, windowHeight / 12 * 11, windowHeight / 18, PI, true);
     }
+
 
 }

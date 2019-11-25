@@ -15,7 +15,7 @@ const WATER_W_TO_SHIP_RATIO = 1.19;
 const WATER_RATIO = 0.41;
 
 function setSizes() {
-    PLAYER_W = windowWidth * 0.2;
+    PLAYER_W = windowWidth * 0.15;
     PLAYER_H = PLAYER_RATIO * PLAYER_W;
     PADDLE_H = PADDLE_TO_SHIP * PLAYER_H;
     WATER_W = WATER_W_TO_SHIP_RATIO * PLAYER_W;
@@ -32,3 +32,6 @@ let TICKET_V = 5;
 const BASE_DIFFICULTY = 1;
 const BASE_SPAWNTIME = 3000;
 const RUMP_UP = 1.2;
+const SPEED_UP = 0.98;
+const BASE_RELEASE_TIME = 60000;
+const ERROR_TOLERANCE = 10;
