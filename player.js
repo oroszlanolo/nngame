@@ -55,8 +55,8 @@ class Player {
         this.paddleAngle += this.dir * this.paddleSpeed;
     }
     hit(ticket) {
-        return abs(this.x - ticket.x) < (PLAYER_W + ticket.w) / 2 &&
-            abs(this.y - ticket.y) < (PLAYER_H + ticket.h) / 2;
+        return abs(this.x - ticket.x) < (PLAYER_W + TICKET_W) / 2 &&
+            abs(this.y - ticket.y) < (PLAYER_H + TICKET_H) / 2;
     }
 }
 

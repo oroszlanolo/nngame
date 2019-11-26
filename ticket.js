@@ -1,7 +1,5 @@
 class Ticket {
-    constructor(w, h, x, y, v, id, title, description, priority, duplicate) {
-        this.w = w;
-        this.h = h;
+    constructor(x, y, v, id, title, description, priority, duplicate) {
         this.x = x;
         this.y = y;
         this.v = v;
@@ -17,13 +15,13 @@ class Ticket {
     draw() {
         stroke(100, 100, 180);
         fill(224, 241, 255);
-        rect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
+        rect(this.x - TICKET_W / 2, this.y - TICKET_H / 2, TICKET_W, TICKET_H);
         fill(100, 100, 180);
         textAlign(CENTER, CENTER);
-        textSize(this.h / 6);
-        text("MAZDAG7", this.x - this.w / 2, this.y - this.h / 2, this.w, this.h / 2);
-        textSize(this.h / 4);
-        text("-", this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
-        text(this.id, this.x - this.w / 2, this.y, this.w, this.h / 2);
+        textSize(TICKET_H / 6);
+        text("MAZDAG7", this.x - TICKET_W / 2, this.y - TICKET_H / 2, TICKET_W, TICKET_H / 2);
+        textSize(TICKET_H / 4);
+        text("-", this.x - TICKET_W / 2, this.y - TICKET_H / 2, TICKET_W, TICKET_H);
+        text(this.id, this.x - TICKET_W / 2, this.y, TICKET_W, TICKET_H / 2);
     }
 }

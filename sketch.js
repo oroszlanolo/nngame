@@ -14,8 +14,7 @@ function preload() {
 function loaded(theJson) {
   ticketPool = theJson.tickets;
   ticketPool.forEach((element, index, theArray) => {
-    theArray[index] = new Ticket(TICKET_W, TICKET_H, 0, 0,
-      TICKET_V, element.ID, element.title, element.description, element.priority, element.duplicate);
+    theArray[index] = new Ticket(0, 0, TICKET_V, element.ID, element.title, element.description, element.priority, element.duplicate);
   });
 }
 

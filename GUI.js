@@ -39,9 +39,10 @@ class GUI {
         endShape();
         pop();
     }
-    drawInGame(points, fails) {
+    drawInGame(points, fails, currTime, maxTime) {
         this.drawPoints(points);
         this.drawFails(fails);
+        this.drawTime(currTime, maxTime);
     }
     drawPoints(points) {
         push();
@@ -62,6 +63,27 @@ class GUI {
         textAlign(LEFT);
         text("ERRORS: " + fails, 10, 30 + this.pointsSizeRatio * windowHeight + 10);
         pop();
+    }
+    drawTime(currTime, maxTime){
+        push();
+        var x = windowWidth * 5 / 6;
+        var y = 10;
+        var percent = currTime / maxTime;
+        fill(141, 40, 215, 200);
+        stroke(141, 40, 215, 200);
+        rect(x, y, percent * windowWidth / 10, windowHeight / 24);
+        noFill();
+        stroke(55, 16, 84);
+        rect(x, y,  windowWidth / 10, windowHeight / 24)
+        fill(55, 16, 84);
+        textAlign(CENTER, CENTER);
+        textSize(windowHeight * 0.02);
+        text("Release date", x,  y + windowHeight / 18 + 5, windowWidth / 5, windowHeight * 0.03);
+        strokeWeight(3);
+        line(x + windowWidth / 10, y, x + windowWidth / 10, y + windowHeight / 18);
+        ellipse( x + windowWidth / 10, y + windowHeight / 18, windowHeight / 100);
+        pop();
+
     }
     drawPostScreen(succ, tickets) {
         background(255);

@@ -103,7 +103,7 @@ class Game {
             element.draw();
         });
         this.visuals.drawFGWater();
-        this.gui.drawInGame(this.points, this.fails);
+        this.gui.drawInGame(this.points, this.fails, this.playTime, this.releaseTime);
     }
     drawPostGame() {
         this.gui.drawPostScreen(this.win, this.failed);
@@ -114,8 +114,8 @@ class Game {
         }
         var choseInd = floor(random(0, this.spawnQueue.length));
         var chosen = this.spawnQueue[choseInd];
-        var x = random(chosen.w / 2, windowWidth - chosen.w / 2);
-        var y = -chosen.h / 2;
+        var x = random(TICKET_W / 2, windowWidth - TICKET_W / 2);
+        var y = - TICKET_H / 2;
         chosen.x = x;
         chosen.y = y;
         this.tickets.push(chosen);
@@ -128,7 +128,7 @@ class Game {
             if (this.player.hit(this.tickets[i])) {
                 this.tickets.splice(i, 1);
                 this.points++;
-            } else if (this.tickets[i].y > windowHeight + this.tickets[i].h / 2) {
+            } else if (this.tickets[i].y > windowHeight + TICKET_H / 2) {
                 this.fails += this.tickets[i].priority;
                 this.failed.push(this.tickets[i]);
                 this.tickets.splice(i, 1);

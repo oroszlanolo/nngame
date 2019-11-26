@@ -14,19 +14,21 @@ let WATER_H = 100;
 const WATER_W_TO_SHIP_RATIO = 1.19;
 const WATER_RATIO = 0.41;
 
-function setSizes() {
-    PLAYER_W = windowWidth * 0.15;
-    PLAYER_H = PLAYER_RATIO * PLAYER_W;
-    PADDLE_H = PADDLE_TO_SHIP * PLAYER_H;
-    WATER_W = WATER_W_TO_SHIP_RATIO * PLAYER_W;
-    WATER_H = WATER_RATIO * WATER_W;
-}
-
-
 //ticket
 let TICKET_W = 100;
 let TICKET_H = 100;
 let TICKET_V = 5;
+
+function setSizes() {
+    PLAYER_W = windowWidth * 0.12;
+    PLAYER_H = PLAYER_RATIO * PLAYER_W;
+    PADDLE_H = PADDLE_TO_SHIP * PLAYER_H;
+    WATER_W = WATER_W_TO_SHIP_RATIO * PLAYER_W;
+    WATER_H = WATER_RATIO * WATER_W;
+    TICKET_H = TICKET_W = windowWidth * 0.05;
+}
+
+
 
 //game
 const BASE_DIFFICULTY = 1;
