@@ -6,10 +6,7 @@ class GUI {
         background(255);
         fill(146, 204, 227, 100);
         stroke(100);
-        rect(0, 0, windowWidth / 2, windowHeight);
-        fill(227, 169, 146, 100);
-        stroke(100);
-        rect(windowWidth / 2, 0, windowWidth / 2, windowHeight);
+        rect(0, 0, windowWidth, windowHeight);
         textSize(windowHeight / 10);
         fill(0);
         stroke(0);
@@ -17,7 +14,7 @@ class GUI {
         text("NNGAME", 0, 0, windowWidth, windowHeight / 2);
         textSize(windowHeight / 16);
         text("INSTRUCTIONS", 0, 0, windowWidth / 2, windowHeight);
-        this.drawArrow(windowWidth / 4, windowHeight / 4 * 3, windowHeight / 12, 0, false);
+        this.drawArrow(windowWidth / 4, windowHeight / 4 * 3, windowHeight / 12, 0, true);
         text("NEW GAME", windowWidth / 2, 0, windowWidth / 2, windowHeight);
         this.drawArrow(windowWidth / 4 * 3, windowHeight / 4 * 3, windowHeight / 12, PI, true);
     }
@@ -90,9 +87,6 @@ class GUI {
         fill(146, 204, 227, 100);
         stroke(100);
         rect(0, 0, windowWidth / 2, windowHeight);
-        fill(227, 169, 146, 100);
-        stroke(100);
-        rect(windowWidth / 2, 0, windowWidth / 2, windowHeight);
         textSize(windowHeight / 12);
         fill(0);
         stroke(0);
@@ -142,6 +136,8 @@ class GUI {
         stroke(0);
         text(INSTRUCTION_TEXT, 10, 10, windowWidth - 20, windowHeight - 20);
         pop();
+        this.drawArrow(windowWidth / 4, windowHeight / 5 * 4, windowHeight / 12, 0, true);
+        this.drawArrow(windowWidth / 4 * 3, windowHeight / 5 * 4, windowHeight / 12, PI, false);
     }
 
 }

@@ -1,3 +1,7 @@
+//controls
+let LEFT_KEY;
+let RIGHT_KEY;
+
 //player
 let PLAYER_W = 150;
 let PLAYER_H = 100;

@@ -45,7 +45,7 @@ class Game {
                 this.logicInGame();
                 break;
             case GameState.postgame:
-                this.drawPostGame();
+                this.gui.drawPostGame();
                 break;
             case GameState.instructions:
                 this.gui.drawInstruction();
@@ -143,64 +143,6 @@ class Game {
             }
         }
     }
-    keyPressed(key) {
-        switch (this.gameSt) {
-            case GameState.mmenu:
-                break;
-            case GameState.ingame:
-                switch (key) {
-                    case LEFT_ARROW:
-                        this.player.addDir(-1);
-                        break;
-                    case RIGHT_ARROW:
-                        this.player.addDir(1);
-                        break;
-                }
-                break;
-            case GameState.postgame:
-                break;
-        }
-    }
-    keyReleased(key) {
-        switch (this.gameSt) {
-            case GameState.mmenu:
-                switch (key) {
-                    case LEFT_ARROW:
-                        this.gameSt = GameState.instructions;
-                        break;
-                    case RIGHT_ARROW:
-                        this.newGame(false);
-                        break;
-                }
-                break;
-            case GameState.ingame:
-                switch (key) {
-                    case LEFT_ARROW:
-                        this.player.addDir(1);
-                        break;
-                    case RIGHT_ARROW:
-                        this.player.addDir(-1);
-                        break;
-                }
-                break;
-            case GameState.postgame:
-                switch (key) {
-                    case LEFT_ARROW:
-                        if (this.wbdAvailable) {
-                            this.convince();
-                        }
-                        break;
-                    case RIGHT_ARROW:
-                        if (this.win) {
-                            this.newGame(this.win);
-                        } else {
-                            this.gameSt = GameState.mmenu;
-                        }
-                        break;
-                }
-                break;
-        }
-    }
     convince() {
         const succ = random() > (1 - SUCCESS_RATE);
         print(succ);
@@ -208,5 +150,82 @@ class Game {
             this.win();
         }
         this.wbdAvailable = false;
+    }
+    keyPressed(key) {
+        switch (key) {
+            case LEFT_KEY:
+                this.pressLeft();
+                break;
+            case RIGHT_KEY:
+                this.pressRight();
+                break;
+        }
+    }
+    pressLeft() {
+        switch (this.gameSt) {
+            case GameState.mmenu:
+                break;
+            case GameState.ingame:
+                this.player.addDir(-1);
+                break;
+            case GameState.postgame:
+                break;
+        }
+    }
+    pressRight() {
+        switch (this.gameSt) {
+            case GameState.mmenu:
+                break;
+            case GameState.ingame:
+                this.player.addDir(1);
+                break;
+            case GameState.postgame:
+                break;
+        }
+    }
+    keyReleased(key) {
+        switch (key) {
+            case LEFT_KEY:
+                this.releaseLeft();
+                break;
+            case RIGHT_KEY:
+                this.releaseRight();
+                break;
+        }
+    }
+    releaseLeft() {
+        switch (this.gameSt) {
+            case GameState.mmenu:
+                this.gameSt = GameState.instructions;
+                break;
+            case GameState.ingame:
+                this.player.addDir(1);
+                break;
+            case GameState.postgame:
+                if (this.wbdAvailable) {
+                    this.convince();
+                }
+                break;
+            case GameState.instructions:
+                this.gameSt = GameState.mmenu;
+                break;
+        }
+    }
+    releaseRight() {
+        switch (this.gameSt) {
+            case GameState.mmenu:
+                this.newGame(false);
+                break;
+            case GameState.ingame:
+                this.player.addDir(-1);
+                break;
+            case GameState.postgame:
+                if (this.win) {
+                    this.newGame(this.win);
+                } else {
+                    this.gameSt = GameState.mmenu;
+                }
+                break;
+        }
     }
 }

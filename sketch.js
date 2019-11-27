@@ -19,6 +19,8 @@ function loaded(theJson) {
 }
 
 function setup() {
+  LEFT_KEY = LEFT_ARROW;
+  RIGHT_KEY = RIGHT_ARROW;
   createCanvas(windowWidth, windowHeight);
   setSizes();
   game = new Game();
