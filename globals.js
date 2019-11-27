@@ -36,4 +36,6 @@ const BASE_SPAWNTIME = 3000;
 const RUMP_UP = 1.2;
 const SPEED_UP = 0.98;
 const BASE_RELEASE_TIME = 60000;
-const ERROR_TOLERANCE = 10;
+const ERROR_TOLERANCE = 5;
+const SUCCESS_RATE = 0.2;
+const WIN_POINTS = 10;

@@ -64,7 +64,7 @@ class GUI {
         text("ERRORS: " + fails, 10, 30 + this.pointsSizeRatio * windowHeight + 10);
         pop();
     }
-    drawTime(currTime, maxTime){
+    drawTime(currTime, maxTime) {
         push();
         var x = windowWidth * 5 / 6;
         var y = 10;
@@ -74,18 +74,18 @@ class GUI {
         rect(x, y, percent * windowWidth / 10, windowHeight / 24);
         noFill();
         stroke(55, 16, 84);
-        rect(x, y,  windowWidth / 10, windowHeight / 24)
+        rect(x, y, windowWidth / 10, windowHeight / 24)
         fill(55, 16, 84);
         textAlign(CENTER, CENTER);
         textSize(windowHeight * 0.02);
-        text("Release date", x,  y + windowHeight / 18 + 5, windowWidth / 5, windowHeight * 0.03);
+        text("Release date", x, y + windowHeight / 18 + 5, windowWidth / 5, windowHeight * 0.03);
         strokeWeight(3);
         line(x + windowWidth / 10, y, x + windowWidth / 10, y + windowHeight / 18);
-        ellipse( x + windowWidth / 10, y + windowHeight / 18, windowHeight / 100);
+        ellipse(x + windowWidth / 10, y + windowHeight / 18, windowHeight / 100);
         pop();
 
     }
-    drawPostScreen(succ, tickets) {
+    drawPostScreen(game) {
         background(255);
         fill(146, 204, 227, 100);
         stroke(100);
@@ -97,13 +97,51 @@ class GUI {
         fill(0);
         stroke(0);
         textAlign(CENTER, CENTER);
-        text(succ ? "Congratulation, the release was successful!" : "I'm sorry, the release was a failure!", 0, 0, windowWidth, windowHeight / 4);
+        var leftText = "";
+        var leftTrue = false;
+        if (game.win) {
+            if (game.wbdAvailable) {
+                text(WIN_TEXT, 0, 0, windowWidth, windowHeight / 5);
+            } else {
+                text(WIN_WITH_CONVINCE_TEXT, 0, 0, windowWidth, windowHeight / 5);
+            }
+        } else {
+            this.drawFailedTickets(game.failed);
+            if (game.wbdAvailable) {
+                leftTrue = true;
+                leftText = CONVINCE_WBD_TEXT;
+                text(FAIL_TEXT, 0, 0, windowWidth, windowHeight / 5);
+            } else {
+                text(FAIL_WITH_CONVINCE_TEXT, 0, 0, windowWidth, windowHeight / 5);
+            }
+        }
         textSize(windowHeight / 30);
-        text(succ ? "" : "Try to convince Pana, these tickets are WBD", 0, windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
-        this.drawArrow(windowWidth / 4, windowHeight / 12 * 11, windowHeight / 18, 0, !succ);
-        text(succ ? "Next Release" : "Main Menu", windowWidth / 2, windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
+        text(leftText, 0, windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
+        this.drawArrow(windowWidth / 4, windowHeight / 12 * 11, windowHeight / 18, 0, leftTrue);
+        text(game.win ? NEXT_RELEASE_TEXT : TO_MAIN_MENU_TEXT, windowWidth / 2, windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
         this.drawArrow(windowWidth / 4 * 3, windowHeight / 12 * 11, windowHeight / 18, PI, true);
     }
+    drawFailedTickets(failed) {
+        push();
+        textSize(windowHeight / 30);
+        text(TICKET_LIST_TEXT, 0, windowHeight / 5, windowWidth, windowHeight / 30);
+        var padding = windowHeight / 10 + 8;
+        for (var i = 0; i < min(failed.length, 4); i++) {
+            failed[i].prettyDraw(windowWidth / 10, windowHeight / 3 + i * padding, windowWidth / 5 * 4, windowHeight / 10);
+        }
+        pop();
+    }
 
+    drawInstruction() {
+        print("valami");
+        push();
+        background(255);
+        textAlign(CENTER, CENTER);
+        textSize(windowHeight / 30);
+        fill(0);
+        stroke(0);
+        text(INSTRUCTION_TEXT, 10, 10, windowWidth - 20, windowHeight - 20);
+        pop();
+    }
 
 }

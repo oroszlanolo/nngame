@@ -24,4 +24,19 @@ class Ticket {
         text("-", this.x - TICKET_W / 2, this.y - TICKET_H / 2, TICKET_W, TICKET_H);
         text(this.id, this.x - TICKET_W / 2, this.y, TICKET_W, TICKET_H / 2);
     }
+    prettyDraw(x, y, w, h) {
+        push();
+        stroke(100, 100, 180);
+        fill(224, 241, 255);
+        rect(x, y, w, h);
+        textSize(floor(h / 4));
+        stroke(0);
+        fill(0);
+        textAlign(CENTER, CENTER);
+        text("MAZDAG7-" + this.id, x, y + 2, w / 3, h / 4);
+        text(this.title, x + w / 3, y + 2, w / 3 * 2, h / 4);
+        textAlign(LEFT, TOP);
+        text("Description: " + this.description, x, y + h / 3, w, h / 3 * 2);
+        pop();
+    }
 }
