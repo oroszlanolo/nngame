@@ -29,6 +29,7 @@ class Game {
             this.rumpDiff();
         } else {
             this.points = 0;
+            this.releases = 0;
         }
         this.gameSt = GameState.ingame;
     }
@@ -45,7 +46,7 @@ class Game {
                 this.logicInGame();
                 break;
             case GameState.postgame:
-                this.gui.drawPostGame();
+                this.gui.drawPostScreen(this);
                 break;
             case GameState.instructions:
                 this.gui.drawInstruction();
@@ -56,7 +57,7 @@ class Game {
         this.counterToSpawn += deltaTime;
         this.playTime += deltaTime;
         if (this.playTime >= this.releaseTime) {
-            this.win();
+            this.winGame();
             return;
         }
         if (this.counterToSpawn >= this.spawnTime) {
@@ -66,7 +67,7 @@ class Game {
         }
         this.move();
         if (this.isLost()) {
-            this.lose();
+            this.loseGame();
             return;
         }
         this.draw();
@@ -76,11 +77,14 @@ class Game {
         this.player.move();
         this.moveTickets();
     }
-    win() {
+    winGame() {
+        this.win = true;
         this.points += WIN_POINTS;
+        this.releases++;
         this.gameSt = GameState.postgame;
     }
-    lose() {
+    loseGame() {
+        this.win = false;
         this.gameSt = GameState.postgame;
     }
     isLost() {
@@ -147,7 +151,7 @@ class Game {
         const succ = random() > (1 - SUCCESS_RATE);
         print(succ);
         if (succ) {
-            this.win();
+            this.winGame();
         }
         this.wbdAvailable = false;
     }

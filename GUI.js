@@ -84,9 +84,9 @@ class GUI {
     }
     drawPostScreen(game) {
         background(255);
-        fill(146, 204, 227, 100);
+        fill(146, 204, 227, 80);
         stroke(100);
-        rect(0, 0, windowWidth / 2, windowHeight);
+        rect(0, 0, windowWidth, windowHeight);
         textSize(windowHeight / 12);
         fill(0);
         stroke(0);
@@ -114,6 +114,12 @@ class GUI {
         this.drawArrow(windowWidth / 4, windowHeight / 12 * 11, windowHeight / 18, 0, leftTrue);
         text(game.win ? NEXT_RELEASE_TEXT : TO_MAIN_MENU_TEXT, windowWidth / 2, windowHeight / 3 * 2, windowWidth / 2, windowHeight / 3);
         this.drawArrow(windowWidth / 4 * 3, windowHeight / 12 * 11, windowHeight / 18, PI, true);
+        textAlign(CENTER, CENTER);
+        textSize(windowHeight / 20);
+        fill(200, 0, 0);
+        stroke(200, 0, 0);
+        text("Points: " + game.points, 0, windowHeight / 6 * 5, windowWidth, windowHeight / 12);
+        text("Releases: " + game.releases, 0, windowHeight / 12 * 11, windowWidth, windowHeight / 18);
     }
     drawFailedTickets(failed) {
         push();
